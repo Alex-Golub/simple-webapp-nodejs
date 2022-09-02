@@ -11,12 +11,17 @@ pipeline {
         stage('SCM') {
             steps {
                 git 'https://github.com/Alex-Golub/simple-webapp-nodejs.git'
+                script {
+                    ciConfig = readYaml(file: 'jenkins/ciConfig.yml')
+                }
             }
         }
 
         stage('Build') {
             agent {
-                dockerfile true
+                docker {
+                    image ciConfig.buildImage
+                }
             }
             steps {
                 sh 'node -v'
