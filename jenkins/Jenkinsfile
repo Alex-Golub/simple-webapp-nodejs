@@ -12,7 +12,7 @@ pipeline {
             steps {
                 git 'https://github.com/Alex-Golub/simple-webapp-nodejs.git'
                 script {
-                    ciConfig = readYaml(file: './ciConfig.yml')
+                    ciConfig = readYaml(file: 'jenkins/ciConfig.yml')
                 }
             }
         }
