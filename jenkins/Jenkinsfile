@@ -1,3 +1,5 @@
+def runCommand
+
 pipeline {
     agent any
 
