@@ -23,7 +23,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -itd \
+                sh '\
+                docker container rm -f simple-webapp-nodejs-container && \
+                docker run -itd \
                 --name simple-webapp-nodejs-container \
                 -p 3000:3000 \
                 simple-webapp-nodejs:1.0'
