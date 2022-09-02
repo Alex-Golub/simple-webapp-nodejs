@@ -13,7 +13,6 @@ pipeline {
                 git 'https://github.com/Alex-Golub/simple-webapp-nodejs.git'
                 script {
                     ciConfig = readYaml(text: 'ciConfig.yml')
-                    sh "node -v"
                 }
             }
         }
@@ -25,6 +24,7 @@ pipeline {
                 }
             }
             steps {
+                sh "node -v"
                 sh 'docker build -t simple-webapp-nodejs:1.0 .'
                 sh 'docker images'
             }
